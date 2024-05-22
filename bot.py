@@ -1,8 +1,8 @@
-import logging
 import os
-from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
-from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters, CallbackContext
-from cards import get_random_card, get_card_by_id
+import logging
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
+from cards import get_random_card
 from collections import add_card_to_collection, get_user_collection, trade_card
 from groups import search_groups
 
@@ -12,21 +12,41 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-TOKEN = os.getenv('7119919089:AAF1c2W1J0INhJZy5LP7NwuNJ0ziIz4ZlKM')
+# Obter o token do bot a partir das variáveis de ambiente
+TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+
+if not TOKEN:
+    raise ValueError("O TOKEN do bot não está configurado nas variáveis de ambiente.")
+
+def start(update: Update, context: CallbackContext) -> None:
+    user = update.effective_user
+    context.user_data['cards'] = []
+    update.message.reply_text(f'Olá, {user.first_name}! Bem-vindo ao bot de colecionar cartas!')
 
 def main() -> None:
+    # Verificar se o TOKEN está definido
+    if not TOKEN:
+        logging.error("O TOKEN do bot não está definido.")
+        return
+
+    # Criar o Updater e passar o TOKEN do bot
     updater = Updater(TOKEN)
 
+    # Obter o dispatcher para registrar os handlers
     dispatcher = updater.dispatcher
 
+    # Adicionar o comando /start
     dispatcher.add_handler(CommandHandler('start', start))
-    # Adicione mais handlers conforme necessário
 
+    # Iniciar o bot
     updater.start_polling()
+
+    # Executar o bot até que o processo seja interrompido
     updater.idle()
 
 if __name__ == '__main__':
     main()
+
 
 def start(update: Update, context: CallbackContext) -> None:
     user = update.effective_user
