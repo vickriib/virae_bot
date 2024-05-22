@@ -1,0 +1,8 @@
+[
+    {"id": 1, "name": "Carta de TV", "category": "TV"},
+    {"id": 2, "name": "Carta de Animangás", "category": "Animangás"},
+    {"id": 3, "name": "Carta de Jogos", "category": "Jogos"},
+    {"id": 4, "name": "Carta de Ásia", "category": "Ásia"},
+    {"id": 5, "name": "Carta de Música", "category": "Música"},
+    {"id": 6, "name": "Carta de Variedades", "category": "Variedades"}
+]
