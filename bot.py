@@ -13,7 +13,7 @@ logging.basicConfig(
 )
 
 # Obter o token do bot a partir das variáveis de ambiente
-TOKEN = os.getenv('7119919089:AAF1c2W1J0INhJZy5LP7NwuNJ0ziIz4ZlKM')
+TOKEN = os.getenv("7119919089:AAF1c2W1J0INhJZy5LP7NwuNJ0ziIz4ZlKM")
 
 if not TOKEN:
     raise ValueError("O TOKEN do bot não está configurado nas variáveis de ambiente.")
