@@ -13,12 +13,12 @@ logging.basicConfig(
 )
 
 # Obter o token do bot a partir das variáveis de ambiente
-TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+TOKEN = os.getenv('7119919089:AAF1c2W1J0INhJZy5LP7NwuNJ0ziIz4ZlKM')
 
 if not TOKEN:
     raise ValueError("O TOKEN do bot não está configurado nas variáveis de ambiente.")
 
-def start(update: Update, context: CallbackContext) -> None:
+def start(update:Update, context:CallbackContext) -> None:
     user = update.effective_user
     context.user_data['cards'] = []
     update.message.reply_text(f'Olá, {user.first_name}! Bem-vindo ao bot de colecionar cartas!')
