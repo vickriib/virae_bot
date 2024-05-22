@@ -12,7 +12,7 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-TOKEN = os.getenv('7119919089:AAF1c2W1J0INhJZy5LP7NwuNJ0ziIz4ZlKM')
+TOKEN = os.getenv("7119919089:AAF1c2W1J0INhJZy5LP7NwuNJ0ziIz4ZlKM")
 
 def main() -> None:
     updater = Updater(TOKEN)
